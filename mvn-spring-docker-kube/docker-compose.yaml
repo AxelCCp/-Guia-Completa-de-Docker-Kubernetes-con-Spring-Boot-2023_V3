@@ -30,7 +30,9 @@ services:
       
   ms-usuarios-server:
     container_name: ms-usuarios-server
-    image: usuarios
+    build:
+      context: ./
+      dockerfile: ./ms-usuarios-server/Dockerfile
     ports:
       - "8001:8001"
     env_file: ./ms-usuarios-server/.env
@@ -42,7 +44,9 @@ services:
     
   ms-cursos-server:
     container_name: ms-cursos-server
-    image: cursos
+    build:
+      context: ./
+      dockerfile: ./ms-cursos-server/Dockerfile
     ports:
       - "8002:8002"
     env_file: ./ms-cursos-server/.env
@@ -50,6 +54,7 @@ services:
       - spring
     depends_on:
       - postgres14
+      - ms-usuarios-server
     restart: always
   
 volumes:
