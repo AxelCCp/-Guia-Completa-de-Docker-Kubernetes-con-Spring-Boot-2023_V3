@@ -30,9 +30,7 @@ services:
       
   ms-usuarios-server:
     container_name: ms-usuarios-server
-    build:
-      context: ./
-      dockerfile: ./ms-usuarios-server/Dockerfile
+    image: 4xe1/usuarios
     ports:
       - "8001:8001"
     env_file: ./ms-usuarios-server/.env
@@ -44,9 +42,7 @@ services:
     
   ms-cursos-server:
     container_name: ms-cursos-server
-    build:
-      context: ./
-      dockerfile: ./ms-cursos-server/Dockerfile
+    image: 4xe1/cursos
     ports:
       - "8002:8002"
     env_file: ./ms-cursos-server/.env
