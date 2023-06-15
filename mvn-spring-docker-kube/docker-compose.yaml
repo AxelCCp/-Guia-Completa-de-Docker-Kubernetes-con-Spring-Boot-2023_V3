@@ -33,7 +33,13 @@ services:
     image: 4xe1/usuarios
     ports:
       - "8001:8001"
-    env_file: ./ms-usuarios-server/.env
+    environment:
+      PORT: 8001
+      DB_HOST: mysql8:3306
+      DB_DATABASE: db-ms-docker-kube
+      DB_USERNAME. root
+      DB_PASSWORD: sasa
+      CURSOS_URL: ms-cursos-server:8002
     networks:
       - spring
     depends_on:
@@ -45,7 +51,13 @@ services:
     image: 4xe1/cursos
     ports:
       - "8002:8002"
-    env_file: ./ms-cursos-server/.env
+    environment:
+      PORT: 8002
+      DB_HOST: postgres14:5432
+      DB_DATABASE: db-ms-docker-kube
+      DB_USERNAME: postgres
+      DB_PASSWORD: sasa
+      USUARIOS_URL: ms-usuarios-server:8001
     networks:
       - spring
     depends_on:
